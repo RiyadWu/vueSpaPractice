@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41">
+  <defs>
+    <style>
+      .fullscreen-cls-1 {
+        fill: #f8f7f4;
+      }
+      .fullscreen-cls-2,
+      .fullscreen-cls-3 {
+        fill: none;
+        stroke: #313e51;
+      }
+      .fullscreen-cls-2 {
+        stroke-miterlimit: 10;
+      }
+      .fullscreen-cls-3 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.5px;
+      }
+    </style>
+  </defs>
+  <title>放大</title>
+  <g id="图层_2" data-name="图层 2">
+    <g id="图层_1-2" data-name="图层 1">
+      <rect class="fullscreen-cls-1" x="0.5" y="0.5" width="40" height="40" rx="1.01" ry="1.01"/>
+      <rect class="fullscreen-cls-2" x="0.5" y="0.5" width="40" height="40" rx="1.01" ry="1.01"/>
+      <polyline class="fullscreen-cls-3" points="13.29 16.81 13.29 13.96 16.15 13.96"/>
+      <polyline class="fullscreen-cls-3" points="24.89 13.96 27.74 13.96 27.74 16.81"/>
+      <polyline class="fullscreen-cls-3" points="27.74 24.1 27.74 26.96 24.89 26.96"/>
+      <polyline class="fullscreen-cls-3" points="16.15 26.96 13.29 26.96 13.29 24.1"/>
+      <line class="fullscreen-cls-3" x1="14.05" y1="26.18" x2="26.95" y2="14.74"/>
+    </g>
+  </g>
+</svg>

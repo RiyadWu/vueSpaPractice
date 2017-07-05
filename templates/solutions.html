@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/images/logo.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <title>doctor interface</title>
+    <link rel="stylesheet" href="/static/css/style/pagination.css">
+
+    <link rel="stylesheet" href="/static/css/style/alert/alertify.css">
+    <link rel="stylesheet" href="/static/css/style/alert/default.css">
+
+    <link rel="stylesheet" href="/static/css/style/viewer/viewer.min.css">
+
+    <link rel="stylesheet" href="/static/css/doctor-student.css">
+  </head>
+  <body id="root">
+    <nav>
+      <div class="user-block">
+        <img src="\static\images\默认头像.svg" alt="">
+        <span style="font-weight: 500;-webkit-font-smoothing: antialiased;">{{ username }}</span>
+        <icon class="vertical-center rotate-45"></icon>
+      </div>
+      <!-- arrange reverse！ -->
+      <div class="toolbar">
+        <form id="upload-form" action="{{ url_for('main.upload') }}" method="POST" enctype="multipart/form-data">
+            <div style="width:80px;" class="logout" onclick="location.href='/logout'" title=登出>
+              <img src="/static/images/doctor-nav-black/logout.png" alt="登出">
+              <span style="float:right;margin-right:8px;position: relative;top: 45%;transform: translateY(-50%);">登出</span>
+            </div>
+            <div style="width:110px;" class="upload btn btn-default purple darken-4 hhide" type="submit" id="upload-button" title=上传图片>
+              <img src="/static/images/doctor-nav-black/上传.png" alt="上传">
+              <img class="hhide" src="/static/images/doctor-nav-white/上传_1.png" alt="上传">
+              <span style="float:right;margin-right:8px;position: relative;top: 45%;transform: translateY(-50%);">上传图片</span>
+            </div>
+            <div style="width:110px;" class="file-picker-outter hhide" title=选择图片>
+              <img src="/static/images/doctor-nav-black/标记显示.png" alt="文件选择">
+              <span style="float:right;margin-right:8px;position: relative;top: 45%;transform: translateY(-50%);">选择图片</span>
+            </div>
+            <input id="file-picker" class="hhide" type="file" name="file" multiple>
+            <div class="upload-filename hhide"></div>
+        </form>
+
+      </div>
+    </nav>
+
+    <aside>
+      <div class="view-function-list">
+        <button class="all-wsi active" type="button">全部病理图</button>
+        <button class="all-clips hhide" type="button">已导出视野截图</button>
+        <span class="view-title hhide">学生</span>
+      </div>
+
+      <!-- <div class="mark-meaning">
+        <p class="mark-title">标记</p>
+        <p>
+          <icon class="bk-red"></icon>
+          已阅
+        </p>
+        <p>
+          <icon class="bk-orange"></icon>
+          未阅
+        </p>
+        <p>
+          <icon class="bk-green"></icon>
+          已创建区域截图
+        </p>
+        <p>
+          <icon class="bk-blue"></icon>
+          学生1标记
+        </p>
+        <p>
+          <icon class="bk-purple"></icon>
+          学生2标记
+        </p>
+      </div> -->
+
+      <!-- <div class="hospital-search">
+        <input type="text" placeholder="快速搜索医院" name="" value="">
+      </div> -->
+    </aside>
+
+    <div class="main-section-outer"></div>
+
+    <!-- 预览弹出框 -->
+    <div class="report-popup hhide">
+        <button class="left-btn" type="button"> < </button>
+        <button class="right-btn" type="button"> > </button>
+      <div class="report-mask"></div>
+      <div class="report-con">
+        <!-- <img class="report-img" src="/static/images/test-imgs/2_2.jpeg" alt=""> -->
+        <img class="report-img" src="" alt="">
+        <img class="report-close" src="/static/images/homepage/cross-light.png" alt="">
+      </div>
+    </div>
+    <!-- 新·预览图片的界面 -->
+    <div class="viewer-plugin-images"></div>
+
+    <script>
+      const USER = {
+        name: '{{ username }}',
+        id: '{{ user_id }}',
+        role: '{{ user_role }}',
+        target: '{{ username }}'
+      }
+    </script>
+    <script src="/static/js/lib/jquery-3.2.0.min.js" charset="utf-8"></script>
+    <script src="/static/js/lib/mock.js" ></script>
+    <!-- <script>if (typeof module === 'object') {window.jQuery = window.$ = module.exports;};</script> -->
+    <script type="text/javascript" src="/static/js/lib/jquery.pagination.js"></script>
+    <script type="text/javascript" src="/static/js/lib/alertify.min.js"></script>
+    <script type="text/javascript" src="/static/js/lib/viewer.min.js"></script>
+
+    <!--<script src="/static/dist/doctor-student-refactor.js"></script>-->
+    <script src="/static/dist/react/doctor-student-react.js"></script>
+    <script type="text/javascript">
+      document.querySelector(".main-section-outer").onmousewheel = function(event) {
+        event = event || window.event;
+        if(event.wheelDeltaY > 0) {
+          previousClick()
+        } else {
+          nextClick()
+        }
+      }
+      function getActiveNum() {
+        var num = $(".M-box").find(".active").html()
+        return Number(num)
+      }
+      function previousClick() {
+        var currentNum = getActiveNum()
+        if(currentNum != 1) {
+          $(".M-box").find(".active").prev().click()
+        }
+      }
+      function nextClick() {
+        var currentNum = getActiveNum()
+        if(currentNum != 40) {
+          $(".M-box").find(".active").next().click()
+        }
+      }
+    </script>
+  </body>
+</html>

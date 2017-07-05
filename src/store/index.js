@@ -11,12 +11,15 @@ Vue.use(Vuex);
 
 // 先写个假数据
 const state = {
-  totalTime: 0,
-  list: []
+    totalTime: 0,
+    list: [],
+    baidu: 'https://www.baidu.com',
+    username: 'AC',
+    isAdmin: true,
 }
 
 export default new Vuex.Store({
-  state,
-  mutations,
-  actions
+    state,
+    mutations,
+    actions
 })

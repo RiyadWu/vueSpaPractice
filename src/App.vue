@@ -1,17 +1,6 @@
 <template>
     <div id="wrapper">
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <i class="glyphicon glyphicon-time"></i>
-                    计划板
-                </a>
-                <ul class="nav navbar-nav">
-                    <li><router-link to="/home">首页</router-link></li>
-                    <li><router-link to="/time-entries">计划列表</router-link></li>
-                </ul>
-            </div>
-        </nav>
+        <navbar></navbar>
         <div class="container">
             <div class="col-sm-3">
                 <sidebar></sidebar>
@@ -24,11 +13,15 @@
 </template>
 
 <script>
-  import Sidebar from './components/Sidebar.vue'
+    import Sidebar from './components/Sidebar.vue'
+    import Nav from './components/Nav.vue'
 
-  export default {
-    components: { 'sidebar': Sidebar },
-  }
+    export default {
+        components: {
+            'sidebar': Sidebar,
+            'navbar': Nav,
+        },
+    }
 </script>
 
 <style>

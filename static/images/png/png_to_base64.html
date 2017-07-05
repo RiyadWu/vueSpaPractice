@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>png_to_base64</title>
+  </head>
+  <body>
+    <img src="./mark-yellow.png" alt="">
+    <script type="text/javascript">
+    // fetch 方法是用 http 协议来请求的，而不是 file 协议
+    // const toDataURL = url => fetch(url)
+    //   .then(response => response.blob())
+    //   .then(blob => new Promise((resolve, reject) => {
+    //     const reader = new FileReader()
+    //     reader.onloadend = () => resolve(reader.result)
+    //     reader.onerror = reject
+    //     reader.readAsDataURL(blob)
+    //   }))
+    //
+    //
+    // toDataURL('./mark-yellow.png')
+    //   .then(dataUrl => {
+    //     console.log('RESULT:', dataUrl)
+    // })
+
+    // 方法2 canvas 方法
+    function toDataURL(src, callback, outputFormat) {
+      var img = new Image();
+      // img.crossOrigin = 'Anonymous';
+      img.onload = function() {
+        var canvas = document.createElement('CANVAS');
+        var ctx = canvas.getContext('2d');
+        var dataURL;
+        canvas.height = this.height;
+        canvas.width = this.width;
+        document.body.appendChild(canvas)
+        ctx.drawImage(this, 0, 0);
+        console.log('canvas', canvas);
+        dataURL = canvas.toDataURL();
+        console.log(dataURL);
+
+        callback(dataURL);
+      };
+      img.src = src;
+    }
+
+    toDataURL(
+      './mark-yellow.png',
+      function(dataUrl) {
+        console.log('RESULT:', dataUrl)
+      }
+    )
+    </script>
+  </body>
+</html>
