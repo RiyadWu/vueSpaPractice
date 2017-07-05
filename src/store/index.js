@@ -16,6 +16,7 @@ const state = {
     baidu: 'https://www.baidu.com',
     username: 'AC',
     isAdmin: true,
+    dataPool: {},
 }
 
 export default new Vuex.Store({
